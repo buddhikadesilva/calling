@@ -9,6 +9,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.onesignal.OneSignal;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
@@ -19,11 +21,9 @@ import io.agora.openduo.R;
 
 public class MainActivity extends BaseCallActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
-
     // Permission request when we want to go to next activity
     // when all necessary permissions are granted.
     private static final int PERMISSION_REQ_FORWARD = 1 << 4;
-
     // Permission request when we want to stay in
     // current activity even if all permissions are granted.
     private static final int PERMISSION_REQ_STAY = 1 << 3;
@@ -36,6 +36,9 @@ public class MainActivity extends BaseCallActivity {
             Manifest.permission.READ_CALL_LOG,
             Manifest.permission.WRITE_CALL_LOG
     };
+
+    // Other
+    public static String LoggedIn_ID;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -77,6 +80,10 @@ public class MainActivity extends BaseCallActivity {
         String identifier = String.format(idFormat, config().getUserId());
         AppCompatTextView idText = findViewById(R.id.main_identifier_code_text);
         idText.setText(identifier);
+
+        // Setting the tags for current User
+        LoggedIn_ID = config().getUserId();
+        OneSignal.sendTag("User_ID", LoggedIn_ID);
     }
 
     private void checkPermissions() {

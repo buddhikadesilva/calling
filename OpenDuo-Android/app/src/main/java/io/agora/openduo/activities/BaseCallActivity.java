@@ -9,9 +9,14 @@ import android.telecom.PhoneAccount;
 import android.telecom.TelecomManager;
 import android.telecom.VideoProfile;
 import android.util.Log;
+import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 import com.onesignal.OneSignal;
 
 import java.util.List;
@@ -33,15 +38,31 @@ public abstract class BaseCallActivity extends BaseRtcActivity implements RtmCha
 
     protected RtmCallManager mRtmCallManager;
 
+//    my
+    private FirebaseAuth mAuth;
+    FirebaseUser user;
+    static String LoggedIn_User_Email;
+    public static FirebaseDatabase mDatabase;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mRtmCallManager = rtmCallManager();
 
-        OneSignal.startInit(this)
-                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
-                .unsubscribeWhenNotificationsAreDisabled(true)
-                .init();
+//        OneSignal.startInit(this)
+//                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+//                .unsubscribeWhenNotificationsAreDisabled(true)
+//                .init();
+
+        OneSignal.startInit(this).init();
+
+//        user = mAuth.getCurrentUser();
+//        Log.d("LOGGED", "user: " + user);
+//
+//        if (user != null) {
+//            LoggedIn_User_Email =user.getEmail();
+//        }
+//        OneSignal.sendTag("User_ID", LoggedIn_User_Email);
     }
 
     public void gotoCallingInterface(String peerUid, String channel, int role) {

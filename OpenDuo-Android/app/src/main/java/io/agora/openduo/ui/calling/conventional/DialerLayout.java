@@ -31,6 +31,8 @@ import java.util.Set;
 import io.agora.openduo.Constants;
 import io.agora.openduo.R;
 import io.agora.openduo.activities.DialerActivity;
+import io.agora.openduo.activities.MainActivity;
+import io.agora.openduo.activities.BaseCallActivity;
 import io.agora.openduo.utils.RtcUtils;
 import io.agora.rtm.ErrorInfo;
 import io.agora.rtm.ResultCallback;
@@ -225,7 +227,7 @@ public class DialerLayout extends RelativeLayout implements View.OnClickListener
     private void sendNotification()
     {
 
-      //  Toast.makeText(this, "Current Recipients is : user1@gmail.com ( Just For Demo )", Toast.LENGTH_SHORT).show();
+        Toast.makeText(mActivity, "Current Recipients is : user1@gmail.com ( Just For Demo )", Toast.LENGTH_SHORT).show();
 
         AsyncTask.execute(new Runnable() {
             @Override
@@ -237,12 +239,12 @@ public class DialerLayout extends RelativeLayout implements View.OnClickListener
                     StrictMode.setThreadPolicy(policy);
                     String send_email;
 
-//This is a Simple Logic to Send Notification different Device Programmatically....
-                  //  if (mainactivity.loggedin_user_email.equals("user1@gmail.com")) {
-                        send_email = "user2@gmail.com";
-                 //   } else {
-                   //     send_email = "user1@gmail.com";
-                  //  }
+                    //This is a Simple Logic to Send Notification different Device Programmatically....
+                    if (MainActivity.LoggedIn_ID.equals("7738")) {
+                        send_email = "0433";
+                    } else {
+                        send_email = "7738";
+                    }
 
                     try {
                         String jsonResponse;
@@ -254,16 +256,16 @@ public class DialerLayout extends RelativeLayout implements View.OnClickListener
                         con.setDoInput(true);
 
                         con.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
-                        con.setRequestProperty("Authorization", "Basic MzI0MWI2MzItNjk0Ny00YzY5LTgyYmQtYTAxMGRlNjAwNmEw");
+                        con.setRequestProperty("Authorization", "Basic NzZiNDM2ZDMtYmVkZS00YzliLWE4ODYtM2RlY2IxYTJjY2Q3");
                         con.setRequestMethod("POST");
 
                         String strJsonBody = "{"
-                                + "\"app_id\": \"7bfbd225-b85d-48e0-8896-b7990604f505\","
+                                + "\"app_id\": \"80ff2b19-609f-47d4-be38-2ce8ea96d63f\","
 
                                 + "\"filters\": [{\"field\": \"tag\", \"key\": \"User_ID\", \"relation\": \"=\", \"value\": \"" + send_email + "\"}],"
 
                                 + "\"data\": {\"foo\": \"bar\"},"
-                                + "\"contents\": {\"en\": \"English Message\"}"
+                                + "\"contents\": {\"en\": \"Call\"}"
                                 + "}";
 
 
@@ -297,6 +299,5 @@ public class DialerLayout extends RelativeLayout implements View.OnClickListener
             }
         });
     }
-
 
 }

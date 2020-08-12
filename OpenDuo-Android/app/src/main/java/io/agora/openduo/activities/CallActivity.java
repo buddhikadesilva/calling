@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.onesignal.OneSignal;
+
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
 
@@ -68,6 +70,7 @@ public class CallActivity extends BaseCallActivity implements View.OnClickListen
         Intent intent = getIntent();
         mChannel = intent.getStringExtra(Constants.KEY_CALLING_CHANNEL);
         mPeer = intent.getStringExtra(Constants.KEY_CALLING_PEER);
+
         if (mPeer != null) {
             try {
                 int peer = Integer.valueOf(mPeer);
