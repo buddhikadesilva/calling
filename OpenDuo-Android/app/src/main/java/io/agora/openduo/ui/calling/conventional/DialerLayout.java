@@ -171,8 +171,8 @@ public class DialerLayout extends RelativeLayout implements View.OnClickListener
                 break;
 
             case R.id.dialer_start_call:
-                startCall();
                 sendNotification();
+                startCall();
                 break;
             case R.id.dialer_backspace:
                 mCallInputManager.backspace();
