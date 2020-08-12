@@ -198,6 +198,7 @@ public class DialerLayout extends RelativeLayout implements View.OnClickListener
                 @Override
                 public void onSuccess(Map<String, Boolean> statusMap) {
                     Boolean bOnline = statusMap.get(peer);
+                    sendNotification();
                     if (bOnline != null && bOnline) {
                         String uid = String.valueOf(mActivity.
                                 application().config().getUserId());
@@ -208,9 +209,9 @@ public class DialerLayout extends RelativeLayout implements View.OnClickListener
                             @Override
                             public void run() {
                                 Toast.makeText(mActivity,
-                                        R.string.peer_not_online+"testtt",
+                                        R.string.peer_not_online,
                                         Toast.LENGTH_SHORT).show();
-                                sendNotification();
+
                             }
                         });
                     }
@@ -241,7 +242,7 @@ public class DialerLayout extends RelativeLayout implements View.OnClickListener
 
                     //This is a Simple Logic to Send Notification different Device Programmatically....
                     if (MainActivity.LoggedIn_ID.equals("7738")) {
-                        send_email = "0433";
+                        send_email = "9112";
                     } else {
                         send_email = "7738";
                     }
