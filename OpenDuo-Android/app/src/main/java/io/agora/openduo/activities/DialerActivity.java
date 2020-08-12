@@ -1,19 +1,35 @@
 package io.agora.openduo.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 import io.agora.openduo.R;
 import io.agora.openduo.ui.calling.conventional.DialerLayout;
 import io.agora.rtm.RtmClient;
 
 public class DialerActivity extends BaseCallActivity {
+
+    private FirebaseAuth mAuth;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dialer);
         initUI();
+
+//        mAuth = FirebaseAuth.getInstance(); // important Call
+////Again check if the user is Already Logged in or Not
+//
+//        if(mAuth.getCurrentUser() == null)
+//        {
+////User NOT logged In
+//            this.finish();
+//            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+//        }
     }
 
     private void initUI() {

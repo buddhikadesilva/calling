@@ -12,6 +12,8 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.onesignal.OneSignal;
+
 import java.util.List;
 
 import io.agora.openduo.Constants;
@@ -35,6 +37,11 @@ public abstract class BaseCallActivity extends BaseRtcActivity implements RtmCha
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mRtmCallManager = rtmCallManager();
+
+        OneSignal.startInit(this)
+                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+                .unsubscribeWhenNotificationsAreDisabled(true)
+                .init();
     }
 
     public void gotoCallingInterface(String peerUid, String channel, int role) {

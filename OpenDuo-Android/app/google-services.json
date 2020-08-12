@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "564248323375",
+    "firebase_url": "https://videocon-f4212.firebaseio.com",
+    "project_id": "videocon-f4212",
+    "storage_bucket": "videocon-f4212.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:564248323375:android:4e986a5d423b411172edda",
+        "android_client_info": {
+          "package_name": "io.sudar.openduo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "564248323375-duc65p5fqqvqf1vqeqrl3fackvt50ae1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.sudar.openduo",
+            "certificate_hash": "92b0d0ebceaebd69c187279fc7b89cac1211ce19"
+          }
+        },
+        {
+          "client_id": "564248323375-672qaps406j122b6j2hoegeuaaderrng.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBI6xbrC2ip8UQHT9yUIxHoWAAAOIIEbM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "564248323375-672qaps406j122b6j2hoegeuaaderrng.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
