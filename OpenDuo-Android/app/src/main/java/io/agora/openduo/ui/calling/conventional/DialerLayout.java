@@ -199,32 +199,32 @@ public class DialerLayout extends RelativeLayout implements View.OnClickListener
 
             mActivity.rtmClient().queryPeersOnlineStatus(peerSet,
                     new ResultCallback<Map<String, Boolean>>() {
-                @Override
-                public void onSuccess(Map<String, Boolean> statusMap) {
-                    Boolean bOnline = statusMap.get(peer);
-                    if (bOnline != null && bOnline) {
-                        String uid = String.valueOf(mActivity.
-                                application().config().getUserId());
-                        String channel = RtcUtils.channelName(uid, peer);
-                        mActivity.gotoCallingInterface(peer, channel, Constants.ROLE_CALLER);
-                    } else {
-                        mActivity.runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                Toast.makeText(mActivity,
-                                        R.string.peer_not_online+"testtt",
-                                        Toast.LENGTH_SHORT).show();
+                        @Override
+                        public void onSuccess(Map<String, Boolean> statusMap) {
+                            Boolean bOnline = statusMap.get(peer);
+                            if (bOnline != null && bOnline) {
+                                String uid = String.valueOf(mActivity.
+                                        application().config().getUserId());
+                                String channel = RtcUtils.channelName(uid, peer);
+                                mActivity.gotoCallingInterface(peer, channel, Constants.ROLE_CALLER);
+                            } else {
+                                mActivity.runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Toast.makeText(mActivity,
+                                                R.string.peer_not_online+"testtt",
+                                                Toast.LENGTH_SHORT).show();
 
+                                    }
+                                });
                             }
-                        });
-                    }
-                }
+                        }
 
-                @Override
-                public void onFailure(ErrorInfo errorInfo) {
+                        @Override
+                        public void onFailure(ErrorInfo errorInfo) {
 
-                }
-            });
+                        }
+                    });
         }
     }
 
