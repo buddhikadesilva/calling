@@ -37,10 +37,13 @@ import io.agora.openduo.utils.RtcUtils;
 import io.agora.rtm.ErrorInfo;
 import io.agora.rtm.ResultCallback;
 
+import static io.agora.openduo.activities.MainActivity.LoggedIn_ID;
+
 public class DialerLayout extends RelativeLayout implements View.OnClickListener {
+    private int mCallNumber;
+
     private class CallInputManager {
         private static final int MAX_COUNT = 4;
-        private int mCallNumber;
         private int mCount;
 
         void append(String digit) {
@@ -169,6 +172,7 @@ public class DialerLayout extends RelativeLayout implements View.OnClickListener
 
             case R.id.dialer_start_call:
                 startCall();
+                sendNotification();
                 break;
             case R.id.dialer_backspace:
                 mCallInputManager.backspace();
@@ -210,7 +214,7 @@ public class DialerLayout extends RelativeLayout implements View.OnClickListener
                                 Toast.makeText(mActivity,
                                         R.string.peer_not_online+"testtt",
                                         Toast.LENGTH_SHORT).show();
-                                sendNotification();
+
                             }
                         });
                     }
@@ -226,8 +230,7 @@ public class DialerLayout extends RelativeLayout implements View.OnClickListener
 
     private void sendNotification()
     {
-
-        Toast.makeText(mActivity, "Current Recipients is : user1@gmail.com ( Just For Demo )", Toast.LENGTH_SHORT).show();
+        Toast.makeText(mActivity, "Current Recipients is : Just For Demo", Toast.LENGTH_SHORT).show();
 
         AsyncTask.execute(new Runnable() {
             @Override
@@ -240,10 +243,11 @@ public class DialerLayout extends RelativeLayout implements View.OnClickListener
                     String send_email;
 
                     //This is a Simple Logic to Send Notification different Device Programmatically....
-                    if (MainActivity.LoggedIn_ID.equals("7738")) {
-                        send_email = "0433";
+                    if (LoggedIn_ID.equals(LoggedIn_ID)) {
+                        String mCallNumber1 = String.valueOf(mCallNumber);
+                        send_email = mCallNumber1;
                     } else {
-                        send_email = "7738";
+                        send_email = LoggedIn_ID;
                     }
 
                     try {
