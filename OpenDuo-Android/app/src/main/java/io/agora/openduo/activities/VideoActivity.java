@@ -74,7 +74,7 @@ public class VideoActivity extends BaseCallActivity {
                 @Override
                 public void run() {
                     if(uid == SCREEN_SHARE_UID) {
-                       // setupRemoteView(uid);
+                        setupRemoteView(uid);
                     }
                 }
             });
@@ -156,7 +156,7 @@ public class VideoActivity extends BaseCallActivity {
         SurfaceView ssV = RtcEngine.CreateRendererView(getApplicationContext());
         ssV.setZOrderOnTop(true);
         ssV.setZOrderMediaOverlay(true);
-      //  mLocalPreview.addView(ssV, new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        mLocalPreviewLayout.addView(ssV, new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
 
         if(mSS) {
 
