@@ -67,18 +67,18 @@ public class VideoActivity extends BaseCallActivity {
             Log.d(TAG, "onJoinChannelSuccess: " + channel + " " + elapsed);
         }
 
-        @Override
-        public void onUserJoined(final int uid, int elapsed) {
-            Log.d(TAG, "onUserJoined: " + (uid&0xFFFFFFL));
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    if(uid == SCREEN_SHARE_UID) {
-                        setupRemoteView(uid);
-                    }
-                }
-            });
-        }
+//        @Override
+//        public void onUserJoined(final int uid, int elapsed) {
+//            Log.d(TAG, "onUserJoined: " + (uid&0xFFFFFFL));
+//            runOnUiThread(new Runnable() {
+//                @Override
+//                public void run() {
+//                    if(uid == SCREEN_SHARE_UID) {
+//                        setupRemoteView(uid);
+//                    }
+//                }
+//            });
+//        }
     };
 
     /////////////////////////////////////////////////////////////////////////////////
@@ -245,6 +245,9 @@ public class VideoActivity extends BaseCallActivity {
                 if (mRemotePreviewLayout.getChildCount() == 0) {
                     SurfaceView surfaceView = setupVideo(uid, false);
                     mRemotePreviewLayout.addView(surfaceView);
+                    if(uid == SCREEN_SHARE_UID) {
+                     setupRemoteView(uid);
+                    }
                 }
             }
         });
