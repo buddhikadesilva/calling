@@ -22,4 +22,8 @@ public class Constants {
 
     public static final int ROLE_CALLER = 0;
     public static final int ROLE_CALLEE = 1;
+
+    public static final int CAMERA_UID = 1;
+    public static final int SCREEN_SHARE_UID = 2;
+    public static final int AUDIENCE_UID = 3;
 }
