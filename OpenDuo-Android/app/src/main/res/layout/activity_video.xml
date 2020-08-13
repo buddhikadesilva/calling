@@ -47,4 +47,12 @@
             android:scaleType="centerCrop"
             android:onClick="onButtonClicked"/>
     </RelativeLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="149dp"
+        android:layout_height="74dp"
+        android:text="Button"
+        android:onClick="onScreenSharingClicked"
+        />
 </RelativeLayout>
