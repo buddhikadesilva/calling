@@ -89,7 +89,7 @@ public class VideoActivity extends BaseCallActivity {
 
         mSSClient = ScreenSharingClient.getInstance();
         mSSClient.setListener(mListener);
-        setupVideoProfile();
+        initAgoraEngineAndJoinChannel();
         initVideo();
 
     }
@@ -150,9 +150,9 @@ public class VideoActivity extends BaseCallActivity {
     }
 
     private void initAgoraEngineAndJoinChannel() {
-   //     initializeAgoraEngine();
-   //     setupVideoProfile();
-    //    setupLocalVideo();
+       initializeAgoraEngine();
+        setupVideoProfile();
+//        setupLocalVideo();
      //   joinChannel();
     }
 
