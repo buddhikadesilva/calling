@@ -36,6 +36,8 @@ public abstract class BaseRtcActivity extends BaseActivity {
                     VideoCanvas.RENDER_MODE_HIDDEN, uid));
         }
 
+
+
         return surfaceView;
     }
 
