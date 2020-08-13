@@ -89,8 +89,9 @@ public class VideoActivity extends BaseCallActivity {
 
         mSSClient = ScreenSharingClient.getInstance();
         mSSClient.setListener(mListener);
-
+        setupVideoProfile();
         initVideo();
+
     }
 
     private void initUI() {
@@ -163,7 +164,10 @@ public class VideoActivity extends BaseCallActivity {
         mRtcEngine.setupRemoteVideo(new VideoCanvas(ssV, VideoCanvas.RENDER_MODE_FIT, uid));
     }
 
+
 ////////////////////////////////////////////////////////////////
+
+
     private void initVideo() {
         Intent intent  = getIntent();
         mChannel = intent.getStringExtra(Constants.KEY_CALLING_CHANNEL);
