@@ -241,17 +241,17 @@ public class VideoActivity extends BaseCallActivity {
     }
 //////////////////////////////
 
-//    @Override
-//    protected void onDestroy() {
-//        super.onDestroy();
-//
-//        leaveChannel();
-//        RtcEngine.destroy();
-//        mRtcEngine = null;
-//        if (mSS) {
-//            mSSClient.stop(getApplicationContext());
-//        }
-//    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        leaveChannel();
+        RtcEngine.destroy();
+        mRtcEngine = null;
+        if (mSS) {
+            mSSClient.stop(getApplicationContext());
+        }
+    }
 
 
 
