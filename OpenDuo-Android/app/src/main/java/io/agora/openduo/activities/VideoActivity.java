@@ -261,16 +261,13 @@ public class VideoActivity extends BaseCallActivity {
         button.setSelected(!selected);
 
         if (button.isSelected()) {
-//            mRtcEngine.enableLocalVideo(false);
             mSSClient.start(getApplicationContext(), getResources().getString(R.string.private_app_id), null,
                     mChannel, Constants.SCREEN_SHARE_UID, mVEC); //SCREEN_SHARE_UID
             button.setText("SS Stop");
             mSS = true;
         } else {
-            mSSClient.stop(getApplicationContext());
-            setContentView(R.layout.activity_video);
-            initUI();
-            ///////////////////////////////////////////////
+//            mSSClient.stop(getApplicationContext());
+            initVideo();
             button.setText("SS start");
             mSS = false;
         }
