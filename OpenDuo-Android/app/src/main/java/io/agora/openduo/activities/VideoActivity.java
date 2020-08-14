@@ -267,7 +267,9 @@ public class VideoActivity extends BaseCallActivity {
             mSS = true;
         } else {
 //            mSSClient.stop(getApplicationContext());
-            initVideo();
+  //          initVideo();
+            SurfaceView surfaceView = setupVideo(Integer.parseInt(config().getUserId()), false);
+            mRemotePreviewLayout.addView(surfaceView);
             button.setText("SS start");
             mSS = false;
         }
