@@ -266,7 +266,11 @@ public class VideoActivity extends BaseCallActivity {
             button.setText("SS Stop");
             mSS = true;
         } else {
-            mSSClient.stop(getApplicationContext());
+            rtcEngine().setClientRole(io.agora.rtc.Constants.CLIENT_ROLE_BROADCASTER);
+            setVideoConfiguration();
+            setupLocalPreview();
+            joinRtcChannel(mChannel, "", Integer.parseInt(config().getUserId()));
+//            mSSClient.stop(getApplicationContext());
             button.setText("SS start");
             mSS = false;
         }
