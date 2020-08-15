@@ -17,7 +17,6 @@ import io.agora.openduo.Constants;
 import io.agora.openduo.R;
 import io.agora.rtc.IRtcEngineEventHandler;
 import io.agora.rtc.RtcEngine;
-import io.agora.rtc.ss.Constant;
 import io.agora.rtc.ss.ScreenSharingClient;
 import io.agora.rtc.video.VideoCanvas;
 import io.agora.rtc.video.VideoEncoderConfiguration;
@@ -31,7 +30,6 @@ public class VideoActivity extends BaseCallActivity {
     private AppCompatImageView mMuteBtn;
     private String mChannel;
     private int mPeerUid;
-
 
     private RtcEngine mRtcEngine;
     private FrameLayout mFlCam;
@@ -79,6 +77,10 @@ public class VideoActivity extends BaseCallActivity {
         }
     };
 
+    public VideoActivity(FrameLayout mFlCam) {
+        this.mFlCam = mFlCam;
+    }
+
     /////
 
     @Override
@@ -116,15 +118,14 @@ public class VideoActivity extends BaseCallActivity {
         params.rightMargin = displayMetrics.widthPixels / 6;
         buttonLayout.setLayoutParams(params);
     }
-/////////////////////////////////////////////////////////////////////
 
+///////////////////////////////////////////////////////////////////
     private void initializeAgoraEngine() {
         try {
             mRtcEngine = RtcEngine.create(getApplicationContext(), getString(R.string.private_app_id), mRtcEventHandler);
         } catch (Exception e) {
             Log.e(TAG, Log.getStackTraceString(e));
-
-            throw new RuntimeException("NEED TO check rtc sdk init fatal error\n" + Log.getStackTraceString(e));
+            throw new RuntimeException("Need to check rtc sdk init fatal error\n" + Log.getStackTraceString(e));
         }
     }
 
@@ -152,7 +153,7 @@ public class VideoActivity extends BaseCallActivity {
     private void initAgoraEngineAndJoinChannel() {
        initializeAgoraEngine();
         setupVideoProfile();
-//        setupLocalVideo();
+     //   setupLocalVideo();
      //   joinChannel();
     }
 
@@ -164,9 +165,7 @@ public class VideoActivity extends BaseCallActivity {
         mRtcEngine.setupRemoteVideo(new VideoCanvas(ssV, VideoCanvas.RENDER_MODE_FIT, uid));
     }
 
-
 ////////////////////////////////////////////////////////////////
-
 
     private void initVideo() {
         Intent intent  = getIntent();
@@ -239,7 +238,7 @@ public class VideoActivity extends BaseCallActivity {
         Log.i(TAG, "Ignore remote invitation from " +
                 remoteInvitation.getCallerId() + " while in calling");
     }
-//////////////////////////////
+////////////////////////////////////////////////////////////////////////////
 
 //    @Override
 //    protected void onDestroy() {
@@ -253,8 +252,6 @@ public class VideoActivity extends BaseCallActivity {
 //        }
 //    }
 
-
-
     public void onScreenSharingClicked(View view) {
         Button button = (Button) view;
         boolean selected = button.isSelected();
@@ -266,8 +263,11 @@ public class VideoActivity extends BaseCallActivity {
             button.setText("SS Stop");
             mSS = true;
         } else {
-//            mSSClient.stop(getApplicationContext());
-            initVideo();
+            // mSSClient.stop(getApplicationContext());
+            rtcEngine().setClientRole(io.agora.rtc.Constants.CLIENT_ROLE_BROADCASTER);
+            setVideoConfiguration();
+            setupLocalPreview();
+            joinRtcChannel(mChannel, "", Integer.parseInt(config().getUserId()));
             button.setText("SS start");
             mSS = false;
         }
